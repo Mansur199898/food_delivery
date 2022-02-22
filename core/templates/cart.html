@@ -65,10 +65,22 @@
           </div>
       </div>
       <div class="row mt-4 d-flex align-items-center">
+        <div class="col-sm-6 order-md-2 text-right">
         <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Оформить заказ 
         </a>
-          
+        </div>
+        {% if messages %}
+        {% for i in messages %}
+        <div class="alert alert-{{i.extra_tags}} d-flex align-items-center" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+          <div>
+            {{ i }}
+          </div>
+
+        </div>
+        {% endfor %}
+        {% endif %}
           <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
               <a href="{% url 'base' %}">
                   <i class="fas fa-arrow-left mr-2"></i> Продолжить покупки</a>
@@ -112,11 +124,11 @@
                 <div class="mb-3">
                   <textarea placeholder="Сообщения" class="form-control" id="message-text" name="c_message"></textarea>
                 </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                  <button type="submit" class="btn btn-primary">Отправить</button>
+                </div>
               </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-          <button type="submit" class="btn btn-primary">Отправить</button>
         </div>
       </div>
     </div>
